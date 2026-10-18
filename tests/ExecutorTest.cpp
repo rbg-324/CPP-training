@@ -11,4 +11,12 @@ TEST(Test01, StoresInitialPose)
         EXPECT_EQ(2, actual.x); EXPECT_EQ(-3, actual.y); EXPECT_EQ('E', actual.heading);
 }
 
+TEST(Test02, UsesDefaultPose)
+{
+    const auto executor = std::unique_ptr<Executor>(Executor::NewExecutor());
+        ASSERT_NE(nullptr, executor);
+        const Pose actual = executor->Query();
+        EXPECT_EQ(0, actual.x); EXPECT_EQ(0, actual.y); EXPECT_EQ('N', actual.heading);
+}
+
 }  // namespace adas
