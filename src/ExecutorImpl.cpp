@@ -33,6 +33,12 @@ void ExecutorImpl::Execute(const std::string& commands)
         case 'S': pose.heading = 'E'; break;
         default: break;
         }
+    } else if (command == 'R') {
+        switch (pose.heading) {
+        case 'E': pose.heading = 'S'; break;
+        case 'S': pose.heading = 'W'; break;
+        default: break;
+        }
     }
 }
 
