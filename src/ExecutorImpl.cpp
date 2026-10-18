@@ -19,7 +19,7 @@ void ExecutorImpl::Execute(const std::string& commands)
     const char command = firstCommand;
     if (command == 'M') {
         switch (pose.heading) {
-
+        case 'E': ++pose.x; break;
         default: break;
         }
     }
