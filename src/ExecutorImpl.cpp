@@ -30,6 +30,7 @@ void ExecutorImpl::Execute(const std::string& commands)
         case 'E': pose.heading = 'N'; break;
         case 'N': pose.heading = 'W'; break;
         case 'W': pose.heading = 'S'; break;
+        case 'S': pose.heading = 'E'; break;
         default: break;
         }
     }
