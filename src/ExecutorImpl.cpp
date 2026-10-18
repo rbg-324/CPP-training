@@ -15,7 +15,6 @@ ExecutorImpl::ExecutorImpl(const Pose& initialPose) noexcept : pose(initialPose)
 
 void ExecutorImpl::Execute(const std::string& commands)
 {
-    (void)commands.at(0);
     for (const char command : commands) {
         if (command == 'M') {
             switch (pose.heading) {
