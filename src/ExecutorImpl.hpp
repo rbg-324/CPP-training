@@ -14,7 +14,6 @@ public:
     Pose Query() const noexcept override;
 
 private:
-    // A deterministic placeholder for the first failing test.
-    Pose pose{0, 0, 'N'};
+    Pose pose;
 };
 }  // namespace adas

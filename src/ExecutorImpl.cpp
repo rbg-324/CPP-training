@@ -8,9 +8,8 @@ Executor* Executor::NewExecutor(const Pose& pose) noexcept
     return new (std::nothrow) ExecutorImpl(pose);
 }
 
-ExecutorImpl::ExecutorImpl(const Pose&) noexcept
+ExecutorImpl::ExecutorImpl(const Pose& initialPose) noexcept : pose(initialPose)
 {
-    // Initial-pose storage will be added after checking test 1's failure.
 }
 
 void ExecutorImpl::Execute(const std::string&) noexcept
