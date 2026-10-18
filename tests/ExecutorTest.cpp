@@ -82,4 +82,13 @@ TEST(Test09, TurnsLeftFromW)
         EXPECT_EQ(3, actual.x); EXPECT_EQ(-4, actual.y); EXPECT_EQ('S', actual.heading);
 }
 
+TEST(Test10, TurnsLeftFromS)
+{
+    const auto executor = std::unique_ptr<Executor>(Executor::NewExecutor({3, -4, 'S'}));
+        ASSERT_NE(nullptr, executor);
+        executor->Execute("L");
+        const Pose actual = executor->Query();
+        EXPECT_EQ(3, actual.x); EXPECT_EQ(-4, actual.y); EXPECT_EQ('E', actual.heading);
+}
+
 }  // namespace adas
