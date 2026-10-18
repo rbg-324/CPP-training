@@ -20,6 +20,7 @@ void ExecutorImpl::Execute(const std::string& commands)
     if (command == 'M') {
         switch (pose.heading) {
         case 'E': ++pose.x; break;
+        case 'W': --pose.x; break;
         default: break;
         }
     }
