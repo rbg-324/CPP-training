@@ -104,4 +104,17 @@ TEST(Test11, TurnsRightPair1)
         }
 }
 
+TEST(Test12, TurnsRightPair2)
+{
+    struct Case { char before; char after; };
+        const Case cases[] = {{'W', 'N'}, {'N', 'E'}};
+        for (const auto& item : cases) {
+            const auto executor = std::unique_ptr<Executor>(Executor::NewExecutor({3, -4, item.before}));
+            ASSERT_NE(nullptr, executor);
+            executor->Execute("R");
+            const Pose actual = executor->Query();
+            EXPECT_EQ(3, actual.x); EXPECT_EQ(-4, actual.y); EXPECT_EQ(item.after, actual.heading);
+        }
+}
+
 }  // namespace adas
