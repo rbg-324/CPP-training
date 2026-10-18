@@ -8,6 +8,6 @@ public:
     void Execute(const std::string& commands) override;
     Pose Query() const noexcept override;
 private:
-    Pose pose{0, 0, 'N'};
+    Pose pose;
 };
 }  // namespace adas
