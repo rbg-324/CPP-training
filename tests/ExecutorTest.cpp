@@ -126,4 +126,13 @@ TEST(Test13, ExecutesMixedCommandsInOrder)
         EXPECT_EQ(-2, actual.x); EXPECT_EQ(2, actual.y); EXPECT_EQ('N', actual.heading);
 }
 
+TEST(Test14, EmptyCommandKeepsPose)
+{
+    const auto executor = std::unique_ptr<Executor>(Executor::NewExecutor({3, -4, 'S'}));
+        ASSERT_NE(nullptr, executor);
+        EXPECT_NO_THROW(executor->Execute(""));
+        const Pose actual = executor->Query();
+        EXPECT_EQ(3, actual.x); EXPECT_EQ(-4, actual.y); EXPECT_EQ('S', actual.heading);
+}
+
 }  // namespace adas
