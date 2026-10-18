@@ -1,0 +1,122 @@
+实验1：14个用例的分支切换、运行与截图
+在VS Code中打开 D:\workspace\cpp-training，并在PowerShell终端进入该目录。
+每个用例分别切换到失败分支和通过分支；切换后重新构建，再只运行当前编号测试。
+截图需包括 [ RUN ] TestNN 与 [ FAILED ] 或 [ PASSED ] 汇总。不要把旧截图用于新版本。
+
+用例01：指定初始状态(2,-3,E)，无指令，期望(2,-3,E)
+git switch test1-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test01.StoresInitialPose
+git switch test1
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test01.StoresInitialPose
+
+用例02：不指定初始状态，无指令，期望(0,0,N)
+git switch test2-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test02.UsesDefaultPose
+git switch test2
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test02.UsesDefaultPose
+
+用例03：(0,0,E)执行M，期望(1,0,E)
+git switch test3-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test03.MovesForwardFacingE
+git switch test3
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test03.MovesForwardFacingE
+
+用例04：(0,0,W)执行M，期望(-1,0,W)
+git switch test4-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test04.MovesForwardFacingW
+git switch test4
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test04.MovesForwardFacingW
+
+用例05：(0,0,N)执行M，期望(0,1,N)
+git switch test5-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test05.MovesForwardFacingN
+git switch test5
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test05.MovesForwardFacingN
+
+用例06：(0,0,S)执行M，期望(0,-1,S)
+git switch test6-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test06.MovesForwardFacingS
+git switch test6
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test06.MovesForwardFacingS
+
+用例07：(3,-4,E)执行L，期望(3,-4,N)
+git switch test7-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test07.TurnsLeftFromE
+git switch test7
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test07.TurnsLeftFromE
+
+用例08：(3,-4,N)执行L，期望(3,-4,W)
+git switch test8-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test08.TurnsLeftFromN
+git switch test8
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test08.TurnsLeftFromN
+
+用例09：(3,-4,W)执行L，期望(3,-4,S)
+git switch test9-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test09.TurnsLeftFromW
+git switch test9
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test09.TurnsLeftFromW
+
+用例10：(3,-4,S)执行L，期望(3,-4,E)
+git switch test10-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test10.TurnsLeftFromS
+git switch test10
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test10.TurnsLeftFromS
+
+用例11：E、S朝向分别执行R，期望E→S，S→W，坐标不变
+git switch test11-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test11.TurnsRightPair1
+git switch test11
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test11.TurnsRightPair1
+
+用例12：W、N朝向分别执行R，期望W→N，N→E，坐标不变
+git switch test12-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test12.TurnsRightPair2
+git switch test12
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test12.TurnsRightPair2
+
+用例13：默认状态执行MLMMRM，期望(-2,2,N)
+git switch test13-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test13.ExecutesMixedCommandsInOrder
+git switch test13
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test13.ExecutesMixedCommandsInOrder
+
+用例14：(3,-4,S)执行空指令，期望(3,-4,S)
+git switch test14-fail
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test14.EmptyCommandKeepsPose
+git switch test14
+cmake --build build --target training_main
+.\build\tests\training_main.exe --gtest_filter=Test14.EmptyCommandKeepsPose
+
+全部单项测试结束后，在test14分支统一运行：
+git switch test14
+cmake --build build --target training_main
+.\build\tests\training_main.exe
+预期显示14个测试通过；以实际输出为准。
