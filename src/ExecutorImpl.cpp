@@ -22,6 +22,7 @@ void ExecutorImpl::Execute(const std::string& commands)
         case 'E': ++pose.x; break;
         case 'W': --pose.x; break;
         case 'N': ++pose.y; break;
+        case 'S': --pose.y; break;
         default: break;
         }
     }
