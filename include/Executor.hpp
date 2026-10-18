@@ -11,7 +11,7 @@ struct Pose {
 
 class Executor {
 public:
-    static Executor* NewExecutor(const Pose& initialPose = {0, 0, 'E'}) noexcept;
+    static Executor* NewExecutor(const Pose& initialPose = {0, 0, 'N'}) noexcept;
     Executor() = default;
     virtual ~Executor() = default;
     Executor(const Executor&) = delete;
