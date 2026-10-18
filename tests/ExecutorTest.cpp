@@ -1,0 +1,14 @@
+#include "Executor.hpp"
+#include <gtest/gtest.h>
+#include <memory>
+
+namespace adas {
+TEST(Test01, StoresInitialPose)
+{
+    const auto executor = std::unique_ptr<Executor>(Executor::NewExecutor({2, -3, 'E'}));
+        ASSERT_NE(nullptr, executor);
+        const Pose actual = executor->Query();
+        EXPECT_EQ(2, actual.x); EXPECT_EQ(-3, actual.y); EXPECT_EQ('E', actual.heading);
+}
+
+}  // namespace adas
