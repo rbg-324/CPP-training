@@ -117,4 +117,13 @@ TEST(Test12, TurnsRightPair2)
         }
 }
 
+TEST(Test13, ExecutesMixedCommandsInOrder)
+{
+    const auto executor = std::unique_ptr<Executor>(Executor::NewExecutor());
+        ASSERT_NE(nullptr, executor);
+        executor->Execute("MLMMRM");
+        const Pose actual = executor->Query();
+        EXPECT_EQ(-2, actual.x); EXPECT_EQ(2, actual.y); EXPECT_EQ('N', actual.heading);
+}
+
 }  // namespace adas
