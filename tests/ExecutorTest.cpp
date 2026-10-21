@@ -1,5 +1,6 @@
 #include "Executor.hpp"
 #include <gtest/gtest.h>
+#include <iostream>
 #include <memory>
 
 namespace adas {
@@ -128,6 +129,7 @@ TEST(Test13, ExecutesMixedCommandsInOrder)
 
 TEST(Test14, EmptyCommandKeepsPose)
 {
+    std::cout << "Test 14: pose (3,-4,S); empty command keeps the same pose" << std::endl;
     const auto executor = std::unique_ptr<Executor>(Executor::NewExecutor({3, -4, 'S'}));
         ASSERT_NE(nullptr, executor);
         EXPECT_NO_THROW(executor->Execute(""));
