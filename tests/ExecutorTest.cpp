@@ -1,5 +1,6 @@
 #include "Executor.hpp"
 #include <gtest/gtest.h>
+#include <iostream>
 #include <memory>
 
 namespace adas {
@@ -93,6 +94,7 @@ TEST(Test10, TurnsLeftFromS)
 
 TEST(Test11, TurnsRightPair1)
 {
+    std::cout << "Test 11: R turns E to S and S to W without moving" << std::endl;
     struct Case { char before; char after; };
         const Case cases[] = {{'E', 'S'}, {'S', 'W'}};
         for (const auto& item : cases) {
