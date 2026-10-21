@@ -1,5 +1,6 @@
 #include "Executor.hpp"
 #include <gtest/gtest.h>
+#include <iostream>
 #include <memory>
 
 namespace adas {
@@ -30,6 +31,7 @@ TEST(Test03, MovesForwardFacingE)
 
 TEST(Test04, MovesForwardFacingW)
 {
+    std::cout << "Test 04: facing W at (0,0); M moves to (-1,0,W)" << std::endl;
     const auto executor = std::unique_ptr<Executor>(Executor::NewExecutor({0, 0, 'W'}));
         ASSERT_NE(nullptr, executor);
         executor->Execute("M");
