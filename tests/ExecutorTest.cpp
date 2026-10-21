@@ -1,5 +1,6 @@
 #include "Executor.hpp"
 #include <gtest/gtest.h>
+#include <iostream>
 #include <memory>
 
 namespace adas {
@@ -119,6 +120,7 @@ TEST(Test12, TurnsRightPair2)
 
 TEST(Test13, ExecutesMixedCommandsInOrder)
 {
+    std::cout << "Test 13: default pose; MLMMRM executes in order; expect (-2,2,N)" << std::endl;
     const auto executor = std::unique_ptr<Executor>(Executor::NewExecutor());
         ASSERT_NE(nullptr, executor);
         executor->Execute("MLMMRM");
