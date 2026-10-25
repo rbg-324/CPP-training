@@ -1,4 +1,5 @@
 #include "ExecutorImpl.hpp"
+#include <memory>
 #include <new>
 #include <string>
 
@@ -15,12 +16,16 @@ ExecutorImpl::ExecutorImpl(const Pose& initialPose) noexcept : pose(initialPose)
 void ExecutorImpl::Execute(const std::string& commands)
 {
     for (const char command : commands) {
+        std::unique_ptr<ICommand> handler;
         if (command == 'M') {
-            MoveCommand{}.DoOperate(*this);
+            handler = std::make_unique<MoveCommand>();
         } else if (command == 'L') {
-            TurnLeftCommand{}.DoOperate(*this);
+            handler = std::make_unique<TurnLeftCommand>();
         } else if (command == 'R') {
-            TurnRightCommand{}.DoOperate(*this);
+            handler = std::make_unique<TurnRightCommand>();
+        }
+        if (handler) {
+            handler->DoOperate(*this);
         }
     }
 }
@@ -63,4 +68,5 @@ Pose ExecutorImpl::Query() const noexcept
     return pose;
 }
 }  // namespace adas
+
 

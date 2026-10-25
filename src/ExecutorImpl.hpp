@@ -12,17 +12,22 @@ private:
     void TurnLeft() noexcept;
     void TurnRight() noexcept;
 
-    class MoveCommand final {
+    class ICommand {
     public:
-        void DoOperate(ExecutorImpl& executor) const noexcept { executor.Move(); }
+        virtual ~ICommand() = default;
+        virtual void DoOperate(ExecutorImpl& executor) const noexcept = 0;
     };
-    class TurnLeftCommand final {
+    class MoveCommand final : public ICommand {
     public:
-        void DoOperate(ExecutorImpl& executor) const noexcept { executor.TurnLeft(); }
+        void DoOperate(ExecutorImpl& executor) const noexcept override { executor.Move(); }
     };
-    class TurnRightCommand final {
+    class TurnLeftCommand final : public ICommand {
     public:
-        void DoOperate(ExecutorImpl& executor) const noexcept { executor.TurnRight(); }
+        void DoOperate(ExecutorImpl& executor) const noexcept override { executor.TurnLeft(); }
+    };
+    class TurnRightCommand final : public ICommand {
+    public:
+        void DoOperate(ExecutorImpl& executor) const noexcept override { executor.TurnRight(); }
     };
 
     Pose pose;
