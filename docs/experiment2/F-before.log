@@ -1,0 +1,31 @@
+Running main() from D:\workspace\cpp-training\tests\googletest\googletest\src\gtest_main.cc
+Fast 01: FM from (0,0,E); M advances two cells; expect (2,0,E)
+D:\workspace\cpp-training\tests\ExecutorFastTest.cpp:14: Failure
+Expected equality of these values:
+  2
+  actual.x
+    Which is: 1
+[  FAILED  ] Fast01.MovesTwoCellsEast (0 ms)
+Fast 02: FL from (0,0,E); move one cell, then turn left; expect (1,0,N)
+D:\workspace\cpp-training\tests\ExecutorFastTest.cpp:26: Failure
+Expected equality of these values:
+  1
+  actual.x
+    Which is: 0
+[  FAILED  ] Fast02.MovesBeforeLeftTurn (0 ms)
+Fast 03: FR from (0,0,E); move one cell, then turn right; expect (1,0,S)
+D:\workspace\cpp-training\tests\ExecutorFastTest.cpp:38: Failure
+Expected equality of these values:
+  1
+  actual.x
+    Which is: 0
+[  FAILED  ] Fast03.MovesBeforeRightTurn (0 ms)
+Fast 04: FFM from (0,0,N) cancels fast mode; another FM re-enables it; expect y=3
+D:\workspace\cpp-training\tests\ExecutorFastTest.cpp:53: Failure
+Expected equality of these values:
+  3
+  actual.y
+    Which is: 2
+[  FAILED  ] Fast04.SecondFCancelsAndNextFReenables (0 ms)
+[==========] 4 tests from 4 test suites ran. (0 ms total)
+[  PASSED  ] 0 tests.
