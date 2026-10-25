@@ -12,6 +12,19 @@ private:
     void TurnLeft() noexcept;
     void TurnRight() noexcept;
 
+    class MoveCommand final {
+    public:
+        void DoOperate(ExecutorImpl& executor) const noexcept { executor.Move(); }
+    };
+    class TurnLeftCommand final {
+    public:
+        void DoOperate(ExecutorImpl& executor) const noexcept { executor.TurnLeft(); }
+    };
+    class TurnRightCommand final {
+    public:
+        void DoOperate(ExecutorImpl& executor) const noexcept { executor.TurnRight(); }
+    };
+
     Pose pose;
 };
 }  // namespace adas

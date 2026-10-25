@@ -16,11 +16,11 @@ void ExecutorImpl::Execute(const std::string& commands)
 {
     for (const char command : commands) {
         if (command == 'M') {
-            Move();
+            MoveCommand{}.DoOperate(*this);
         } else if (command == 'L') {
-            TurnLeft();
+            TurnLeftCommand{}.DoOperate(*this);
         } else if (command == 'R') {
-            TurnRight();
+            TurnRightCommand{}.DoOperate(*this);
         }
     }
 }
@@ -63,3 +63,4 @@ Pose ExecutorImpl::Query() const noexcept
     return pose;
 }
 }  // namespace adas
+
