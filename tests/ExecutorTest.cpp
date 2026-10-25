@@ -1,4 +1,5 @@
 #include "Executor.hpp"
+#include "PoseEq.hpp"
 #include <gtest/gtest.h>
 #include <iostream>
 #include <memory>
@@ -10,7 +11,8 @@ TEST(Test01, StoresInitialPose)
     const auto executor = std::unique_ptr<Executor>(Executor::NewExecutor({2, -3, 'E'}));
         ASSERT_NE(nullptr, executor);
         const Pose actual = executor->Query();
-        EXPECT_EQ(2, actual.x); EXPECT_EQ(-3, actual.y); EXPECT_EQ('E', actual.heading);
+        const Pose target{2, -3, 'E'};
+        EXPECT_EQ(target, actual);
 }
 
 TEST(Test02, UsesDefaultPose)
@@ -151,3 +153,4 @@ TEST(Test14, EmptyCommandKeepsPose)
 }
 
 }  // namespace adas
+
