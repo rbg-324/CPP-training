@@ -10,37 +10,51 @@ Executor* Executor::NewExecutor(const Pose& initialPose) noexcept
 
 ExecutorImpl::ExecutorImpl(const Pose& initialPose) noexcept : pose(initialPose)
 {
-
 }
 
 void ExecutorImpl::Execute(const std::string& commands)
 {
     for (const char command : commands) {
         if (command == 'M') {
-            switch (pose.heading) {
-            case 'E': ++pose.x; break;
-            case 'W': --pose.x; break;
-            case 'N': ++pose.y; break;
-            case 'S': --pose.y; break;
-            default: break;
-            }
+            Move();
         } else if (command == 'L') {
-            switch (pose.heading) {
-            case 'E': pose.heading = 'N'; break;
-            case 'N': pose.heading = 'W'; break;
-            case 'W': pose.heading = 'S'; break;
-            case 'S': pose.heading = 'E'; break;
-            default: break;
-            }
+            TurnLeft();
         } else if (command == 'R') {
-            switch (pose.heading) {
-            case 'E': pose.heading = 'S'; break;
-            case 'S': pose.heading = 'W'; break;
-            case 'W': pose.heading = 'N'; break;
-            case 'N': pose.heading = 'E'; break;
-            default: break;
-            }
+            TurnRight();
         }
+    }
+}
+
+void ExecutorImpl::Move() noexcept
+{
+    switch (pose.heading) {
+    case 'E': ++pose.x; break;
+    case 'W': --pose.x; break;
+    case 'N': ++pose.y; break;
+    case 'S': --pose.y; break;
+    default: break;
+    }
+}
+
+void ExecutorImpl::TurnLeft() noexcept
+{
+    switch (pose.heading) {
+    case 'E': pose.heading = 'N'; break;
+    case 'N': pose.heading = 'W'; break;
+    case 'W': pose.heading = 'S'; break;
+    case 'S': pose.heading = 'E'; break;
+    default: break;
+    }
+}
+
+void ExecutorImpl::TurnRight() noexcept
+{
+    switch (pose.heading) {
+    case 'E': pose.heading = 'S'; break;
+    case 'S': pose.heading = 'W'; break;
+    case 'W': pose.heading = 'N'; break;
+    case 'N': pose.heading = 'E'; break;
+    default: break;
     }
 }
 
