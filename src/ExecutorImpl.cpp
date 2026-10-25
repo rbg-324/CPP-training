@@ -23,6 +23,8 @@ void ExecutorImpl::Execute(const std::string& commands)
             handler = std::make_unique<TurnLeftCommand>();
         } else if (command == 'R') {
             handler = std::make_unique<TurnRightCommand>();
+        } else if (command == 'F') {
+            handler = std::make_unique<FastCommand>();
         }
         if (handler) {
             handler->DoOperate(*this);
@@ -63,10 +65,18 @@ void ExecutorImpl::TurnRight() noexcept
     }
 }
 
+void ExecutorImpl::Fast() noexcept
+{
+    fast = !fast;
+}
+
+bool ExecutorImpl::IsFast() const noexcept
+{
+    return fast;
+}
+
 Pose ExecutorImpl::Query() const noexcept
 {
     return pose;
 }
 }  // namespace adas
-
-
