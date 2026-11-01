@@ -1,0 +1,128 @@
+Running main() from D:\workspace\cpp-training\tests\googletest\googletest\src\gtest_main.cc
+Reverse 01: BM moves back one cell in E/W/N/S; heading unchanged
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:11: Failure
+Expected equality of these values:
+  expected.x
+    Which is: -1
+  actual.x
+    Which is: 1
+Google Test trace:
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:22: E
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:11: Failure
+Expected equality of these values:
+  expected.x
+    Which is: 1
+  actual.x
+    Which is: -1
+Google Test trace:
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:22: W
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:12: Failure
+Expected equality of these values:
+  expected.y
+    Which is: -1
+  actual.y
+    Which is: 1
+Google Test trace:
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:22: N
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:12: Failure
+Expected equality of these values:
+  expected.y
+    Which is: 1
+  actual.y
+    Which is: -1
+Google Test trace:
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:22: S
+[  FAILED  ] Reverse01.MovesBackInEveryHeading (0 ms)
+Reverse 02: BL from (0,0,E); expect (0,0,S)
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:13: Failure
+Expected equality of these values:
+  expected.heading
+    Which is: 'S' (83, 0x53)
+  actual.heading
+    Which is: 'N' (78, 0x4E)
+[  FAILED  ] Reverse02.LeftCommandTurnsRight (0 ms)
+Reverse 03: BR from (0,0,E); expect (0,0,N)
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:13: Failure
+Expected equality of these values:
+  expected.heading
+    Which is: 'N' (78, 0x4E)
+  actual.heading
+    Which is: 'S' (83, 0x53)
+[  FAILED  ] Reverse03.RightCommandTurnsLeft (0 ms)
+Reverse 04: BFM and FBM from E; both expect (-2,0,E)
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:11: Failure
+Expected equality of these values:
+  expected.x
+    Which is: -2
+  actual.x
+    Which is: 2
+Google Test trace:
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:52: BFM
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:11: Failure
+Expected equality of these values:
+  expected.x
+    Which is: -2
+  actual.x
+    Which is: 2
+Google Test trace:
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:52: FBM
+[  FAILED  ] Reverse04.FastReverseOrderIsIndependent (0 ms)
+Reverse 05: BFL from E; expect (-1,0,S)
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:11: Failure
+Expected equality of these values:
+  expected.x
+    Which is: -1
+  actual.x
+    Which is: 1
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:13: Failure
+Expected equality of these values:
+  expected.heading
+    Which is: 'S' (83, 0x53)
+  actual.heading
+    Which is: 'N' (78, 0x4E)
+[  FAILED  ] Reverse05.FastLeftMovesBackThenTurnsRight (0 ms)
+Reverse 06: BFR from E; expect (-1,0,N)
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:11: Failure
+Expected equality of these values:
+  expected.x
+    Which is: -1
+  actual.x
+    Which is: 1
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:13: Failure
+Expected equality of these values:
+  expected.heading
+    Which is: 'N' (78, 0x4E)
+  actual.heading
+    Which is: 'S' (83, 0x53)
+[  FAILED  ] Reverse06.FastRightMovesBackThenTurnsLeft (0 ms)
+Reverse 07: BBM from N; expect normal movement (0,1,N)
+Reverse 08: B, M, BM in separate calls from E; x goes 0,-1,0
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:11: Failure
+Expected equality of these values:
+  expected.x
+    Which is: -1
+  actual.x
+    Which is: 1
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:11: Failure
+Expected equality of these values:
+  expected.x
+    Which is: 0
+  actual.x
+    Which is: 2
+[  FAILED  ] Reverse08.StatePersistsAcrossExecuteCalls (0 ms)
+Reverse 09: BFFM then BFM from E; x goes -1 then 1
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:11: Failure
+Expected equality of these values:
+  expected.x
+    Which is: -1
+  actual.x
+    Which is: 1
+D:\workspace\cpp-training\tests\ExecutorReverseTest.cpp:11: Failure
+Expected equality of these values:
+  expected.x
+    Which is: 1
+  actual.x
+    Which is: 3
+[  FAILED  ] Reverse09.FastAndReverseToggleIndependently (0 ms)
+[==========] 9 tests from 9 test suites ran. (1 ms total)
+[  PASSED  ] 1 test.
