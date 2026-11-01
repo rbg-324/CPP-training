@@ -1,7 +1,7 @@
 #include "ExecutorImpl.hpp"
+#include "Command.hpp"
 #include <memory>
 #include <new>
-#include <string>
 
 namespace adas {
 Executor* Executor::NewExecutor(const Pose& initialPose) noexcept
@@ -9,9 +9,7 @@ Executor* Executor::NewExecutor(const Pose& initialPose) noexcept
     return new (std::nothrow) ExecutorImpl(initialPose);
 }
 
-ExecutorImpl::ExecutorImpl(const Pose& initialPose) noexcept : pose(initialPose)
-{
-}
+ExecutorImpl::ExecutorImpl(const Pose& initialPose) noexcept : poseHandler(initialPose) {}
 
 void ExecutorImpl::Execute(const std::string& commands)
 {
@@ -27,56 +25,10 @@ void ExecutorImpl::Execute(const std::string& commands)
             handler = std::make_unique<FastCommand>();
         }
         if (handler) {
-            handler->DoOperate(*this);
+            handler->DoOperate(poseHandler);
         }
     }
 }
 
-void ExecutorImpl::Move() noexcept
-{
-    switch (pose.heading) {
-    case 'E': ++pose.x; break;
-    case 'W': --pose.x; break;
-    case 'N': ++pose.y; break;
-    case 'S': --pose.y; break;
-    default: break;
-    }
-}
-
-void ExecutorImpl::TurnLeft() noexcept
-{
-    switch (pose.heading) {
-    case 'E': pose.heading = 'N'; break;
-    case 'N': pose.heading = 'W'; break;
-    case 'W': pose.heading = 'S'; break;
-    case 'S': pose.heading = 'E'; break;
-    default: break;
-    }
-}
-
-void ExecutorImpl::TurnRight() noexcept
-{
-    switch (pose.heading) {
-    case 'E': pose.heading = 'S'; break;
-    case 'S': pose.heading = 'W'; break;
-    case 'W': pose.heading = 'N'; break;
-    case 'N': pose.heading = 'E'; break;
-    default: break;
-    }
-}
-
-void ExecutorImpl::Fast() noexcept
-{
-    fast = !fast;
-}
-
-bool ExecutorImpl::IsFast() const noexcept
-{
-    return fast;
-}
-
-Pose ExecutorImpl::Query() const noexcept
-{
-    return pose;
-}
+Pose ExecutorImpl::Query() const noexcept { return poseHandler.Query(); }
 }  // namespace adas
