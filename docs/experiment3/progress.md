@@ -21,3 +21,9 @@
 ## 第四阶段 倒车 B 指令
 
 先增加 9 项倒车测试，覆盖四朝向后退、BL/BR、BFM/BFL/BFR、BB 取消、跨 Execute 调用保留状态，以及 F/B 独立切换。课件已有的 FM/FL/FR/FFM 由原有 F 测试继续覆盖。先运行新测试确认缺少 B 时的实际差异。
+
+B 实现前的新测试结果为 8 项未通过、1 项通过。BBM 在忽略 B 时也会前进一格，因此这一项通过不能证明 B 已实现。
+
+实现：PoseHandler 增加 reverse 状态和 Reverse 开关。Move 在每一格操作中按 reverse 改变步长正负，TurnLeft/TurnRight 按 reverse 交换模 4 偏移。新增 ReverseCommand 函数对象，并在静态表中加入 B 映射。加速指令仍逐次调用 Move，所以 BF 的两格倒退是逐格执行。
+
+实现后原 18 项与新增 9 项合计 27 项全部通过，CTest 通过。

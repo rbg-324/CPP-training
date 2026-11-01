@@ -21,8 +21,9 @@ void PoseHandler::Move() noexcept
 {
     const auto index = HeadingIndex(pose.heading);
     if (index < steps.size()) {
-        pose.x += steps[index].x;
-        pose.y += steps[index].y;
+        const int sign = reverse ? -1 : 1;
+        pose.x += sign * steps[index].x;
+        pose.y += sign * steps[index].y;
     }
 }
 
@@ -34,9 +35,10 @@ void PoseHandler::Turn(std::size_t offset) noexcept
     }
 }
 
-void PoseHandler::TurnLeft() noexcept { Turn(3); }
-void PoseHandler::TurnRight() noexcept { Turn(1); }
+void PoseHandler::TurnLeft() noexcept { Turn(reverse ? 1 : 3); }
+void PoseHandler::TurnRight() noexcept { Turn(reverse ? 3 : 1); }
 void PoseHandler::Fast() noexcept { fast = !fast; }
+void PoseHandler::Reverse() noexcept { reverse = !reverse; }
 bool PoseHandler::IsFast() const noexcept { return fast; }
 Pose PoseHandler::Query() const noexcept { return pose; }
 }  // namespace adas

@@ -13,6 +13,7 @@ public:
     void TurnLeft() noexcept;
     void TurnRight() noexcept;
     void Fast() noexcept;
+    void Reverse() noexcept;
     bool IsFast() const noexcept;
     Pose Query() const noexcept;
 
@@ -21,5 +22,6 @@ private:
 
     Pose pose;
     bool fast{false};
+    bool reverse{false};
 };
 }  // namespace adas

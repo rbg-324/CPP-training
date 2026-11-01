@@ -1,0 +1,30 @@
+Running main() from D:\workspace\cpp-training\tests\googletest\googletest\src\gtest_main.cc
+Test 01: specified initial pose (2,-3,E); no command; expect (2,-3,E)
+Test 02: default initial pose; no command; expect (0,0,N)
+Test 03: facing E at (0,0); M moves to (1,0,E)
+Test 04: facing W at (0,0); M moves to (-1,0,W)
+Test 05: facing N at (0,0); M moves to (0,1,N)
+Test 06: facing S at (0,0); M moves to (0,-1,S)
+Test 07: facing E at (3,-4); L turns to N without moving
+Test 08: facing N at (3,-4); L turns to W without moving
+Test 09: facing W at (3,-4); L turns to S without moving
+Test 10: facing S at (3,-4); L turns to E without moving
+Test 11: R turns E to S and S to W without moving
+Test 12: R turns W to N and N to E without moving
+Test 13: default pose; MLMMRM executes in order; expect (-2,2,N)
+Test 14: pose (3,-4,S); empty command keeps the same pose
+Reverse 01: BM moves back one cell in E/W/N/S; heading unchanged
+Reverse 02: BL from (0,0,E); expect (0,0,S)
+Reverse 03: BR from (0,0,E); expect (0,0,N)
+Reverse 04: BFM and FBM from E; both expect (-2,0,E)
+Reverse 05: BFL from E; expect (-1,0,S)
+Reverse 06: BFR from E; expect (-1,0,N)
+Reverse 07: BBM from N; expect normal movement (0,1,N)
+Reverse 08: B, M, BM in separate calls from E; x goes 0,-1,0
+Reverse 09: BFFM then BFM from E; x goes -1 then 1
+Fast 01: FM from (0,0,E); M advances two cells; expect (2,0,E)
+Fast 02: FL from (0,0,E); move one cell, then turn left; expect (1,0,N)
+Fast 03: FR from (0,0,E); move one cell, then turn right; expect (1,0,S)
+Fast 04: FFM from (0,0,N) cancels fast mode; another FM re-enables it; expect y=3
+[==========] 27 tests from 27 test suites ran. (0 ms total)
+[  PASSED  ] 27 tests.
