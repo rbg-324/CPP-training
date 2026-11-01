@@ -29,6 +29,8 @@ ctest --test-dir build --output-on-failure
 .\build\tests\training_main.exe '--gtest_filter=Reverse*'
 ```
 
-截图位于 screenshots，共 8 张。代码图来自各阶段的 VS Code 编辑器；测试图来自实际运行。08-final-27-tests.png 摘出真实输出中的倒车说明和完整 27 项汇总，完整输出见 04-final-27.log。
+截图位于 screenshots，共 9 张。代码图来自各阶段的 VS Code 编辑器；测试图来自实际运行。08-final-27-tests.png 摘出真实输出中的倒车说明和完整 27 项汇总，完整输出见 04-final-27.log。
 
 实验报告为 实验3报告_标准模板版.docx，正文四号宋体，保留标准模板封面、栏目、姓名学号及评分签字空栏。
+
+09-github-update.png 为已登录 Edge 中的 GitHub exp3-final 仓库更新截图，报告第八部分图 9 对应此图。
