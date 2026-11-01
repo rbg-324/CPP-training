@@ -1,5 +1,6 @@
 #pragma once
 #include "Executor.hpp"
+#include <cstddef>
 
 namespace adas {
 class PoseHandler final {
@@ -16,6 +17,8 @@ public:
     Pose Query() const noexcept;
 
 private:
+    void Turn(std::size_t offset) noexcept;
+
     Pose pose;
     bool fast{false};
 };
