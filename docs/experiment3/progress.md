@@ -11,3 +11,7 @@
 用 unordered_map<char, unique_ptr<ICommand>> 建立 M/L/R/F 到指令对象的映射，Execute 的循环统一执行查表和调用。将朝向按 N/E/S/W 排列，以方向步长表执行前进，以模 4 运算完成转向，保留无效朝向不改变位姿的处理。
 
 验证：原有 18 项测试保持通过。
+
+## 第三阶段 函数式调用
+
+先移除 ICommand 继承，用无捕获 lambda 表达各指令，并把 std::function 值保存在静态只读映射表中。表中函数每次显式接收 PoseHandler 引用，避免捕获执行器或临时指令对象。
